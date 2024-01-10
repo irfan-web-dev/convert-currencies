@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Currencies converter</title>
+  </head>
+  <body>
+    <header>
+      <h1>Currency Converter:</h1>
+    </header>
+    <main>
+      <form id="form">
+        <select name="money" id="currencies" required>
+          <option value="USD">United States dollar</option>
+          <option value="INR">Indian Rupees</option>
+          <option value="EUR">Euro</option>
+        </select>
+        <input type="number" required id="currencyValue" />
+        <button>convert</button>
+      </form>
+      <div class="wrapper">
+        <h1 id="convertCurrency"></h1>
+        <h4 id="convertValue"></h4>
+      </div>
+    </main>
+
+    <script>
+      const form$ = document.getElementById("form");
+      const currencies$ = document.getElementById("currencies");
+      const currencyValue$ = document.getElementById("currencyValue");
+      let convertCurrency$ = document.getElementById("convertCurrency");
+      let convertValue$ = document.getElementById("convertValue");
+
+      form$.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (currencies$.value === "USD") {
+          const USD = currencyValue$.value * 277.13;
+          convertCurrency$.innerText = currencies$.value + ":";
+          convertValue$.innerText = USD;
+        } else if (currencies$.value === "INR") {
+          const INR = currencyValue$.value * 3.33;
+          convertCurrency$.innerText = currencies$.value + ":";
+          convertValue$.innerText = INR;
+        } else if (currencies$.value === "EUR") {
+          const EUR = currencyValue$.value * 308.33;
+          convertCurrency$.innerText = currencies$.value + ":";
+          convertValue$.innerText = EUR;
+        }
+
+        currencyValue$.value = "";
+      });
+    </script>
+  </body>
+</html>
